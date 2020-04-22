@@ -8,7 +8,9 @@ import Main from './components/MainComponent'
   {
   return (
     <div className="App">
+      <div className="container">
       <Main/>
+      </div>
     </div>
   );
 }

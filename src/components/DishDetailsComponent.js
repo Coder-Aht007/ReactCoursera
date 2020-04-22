@@ -1,11 +1,8 @@
 import React from 'react'
 import {Card,CardImg,CardText,CardBody,CardTitle} from 'reactstrap'
 
-class DishDetails extends React.Component{
-
-    render()
-    {
-        if(this.props.dish==null)
+    const DishDetails=(props)=>{
+        if(props.dish==null)
         {
             return(
                 <div></div>
@@ -16,29 +13,28 @@ class DishDetails extends React.Component{
         return(
             <div className='row'>
                 <div className="col-12 col-md-5 m-1">
-                {this.renderDish(this.props.dish)}
+                <RenderDish dish={props.dish} />
                 </div>
                 <div className="col-12 col-md-5 m-1">
-                    {this.renderComments(this.props.dish.comments)}
-
+                    <RenderComments comments={props.dish.comments}/>
                 </div>
            </div>
         );
         }
     }
-    renderDish(dish)
+    function RenderDish({dish})
     {
         return (
         <Card>
-            <CardImg width='100%' src={this.props.dish.image} alt={this.props.dish.name} />
+            <CardImg width='100%' src={dish.image} alt={dish.name} />
             <CardBody>
-            <CardTitle><h4>{this.props.dish.name}</h4></CardTitle>
-            <CardText>{this.props.dish.description}</CardText>
+            <CardTitle><h4>{dish.name}</h4></CardTitle>
+            <CardText>{dish.description}</CardText>
             </CardBody>
         </Card>
         );
     }
-    renderComments(comments)
+    function RenderComments({comments})
     {
         const months = [
             'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
@@ -61,6 +57,5 @@ class DishDetails extends React.Component{
         );
     }
 
-}
-
+    
 export default DishDetails;
