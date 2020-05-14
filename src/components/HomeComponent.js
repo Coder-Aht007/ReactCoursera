@@ -4,10 +4,6 @@ import {Loading} from "./LoadingComponent"
 import {baseUrl} from "../shared/baseUrl"
 function RenderCard ({item,isLoading,errMess})
 {
-    if(item==null)
-    {
-        return (<div></div>);
-    }
     if(isLoading)
     {
         return (
@@ -47,7 +43,7 @@ function Home(props)
                 <div className="col-12 col-md m-1">
                     <RenderCard item={props.promotion} 
                      isLoading={props.promosLoading}
-                     errMess= {props.errMess}
+                     errMess= {props.promosErrMess}
                     />
                 </div>
                 <div className="col-12 col-md m-1">

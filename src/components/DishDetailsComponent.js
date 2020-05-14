@@ -56,7 +56,7 @@ const minLength=(len)=>(val)=>(val) &&(val.length>=len);
                         <RenderDish dish={props.dish} />
                     </div>
                     <div className="col-12 col-md-5 m-1">
-                        <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
+                        <RenderComments comments={props.comments} postComment={props.postComment} dishId={props.dish.id} />
                     </div>
                 </div>
            </div>
@@ -75,7 +75,7 @@ const minLength=(len)=>(val)=>(val) &&(val.length>=len);
         </Card>
         );
     }
-    function RenderComments({comments,addComment,dishId})
+    function RenderComments({comments,postComment,dishId})
     {
         const months = [
             'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov',
@@ -95,7 +95,7 @@ const minLength=(len)=>(val)=>(val) &&(val.length>=len);
         <ul className='list-unstyled'>
             {com}
             </ul>
-            <CommentForm  addComment={addComment} dishId={dishId} />
+            <CommentForm  postComment={postComment} dishId={dishId} />
         </div>
         );
     }
@@ -111,7 +111,7 @@ class CommentForm extends React.Component{
 
     handleSubmit(values)
     {
-        this.props.addComment(this.props.dishId,values.rating,values.author,values.comments);
+        this.props.postComment(this.props.dishId,values.rating,values.name,values.comments);
         this.toggleModal();
     }
 
